@@ -1,0 +1,19 @@
+create a with type number
+ask for input
+set that to a
+spawn 1
+if a != 0
+multiply 2 by a
+add that by 1
+modulo that by 2
+multiply that by a
+endif
+divide a by that
+output that
+
+ask>push
+push 1
+if $0
+grab>mult>add>mod>mult $0>set 1
+iend
+grab>div $1>puts

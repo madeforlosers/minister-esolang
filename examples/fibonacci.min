@@ -1,0 +1,6 @@
+ask>push
+push 1;push 0
+while 0
+grab 0>subt>set 0
+grab L-2,2>sum>push>puts
+wend

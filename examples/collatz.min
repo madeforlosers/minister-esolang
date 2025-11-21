@@ -1,0 +1,7 @@
+ask>push>subt>push
+while 1
+grab>div>set>mult>mod>set 2>if
+grab>mult 6>add>set
+iend
+grab>puts>subt>set 1
+wend
