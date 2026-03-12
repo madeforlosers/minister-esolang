@@ -42,6 +42,9 @@ var commands = {
     "spawn":function(item){
         return parseFloat(item);
     },
+    "int":function(item = localAns){
+        return parseInt(item);
+    },
     "sum":function(){
         if(typeof localAns != "object"){
             return list.reduce((a,c)=>parseFloat(a)+parseFloat(c),0);
@@ -81,6 +84,17 @@ var commands = {
         } 
 
         return parseFloat(localAns) / parseFloat(item);
+    },
+    "exp":function(item = 2){
+        if(typeof localAns == "object"){
+            let slList = [];
+            for(x of localAns){
+                slList.push(parseFloat(x) ** parseFloat(item))
+            }
+            return slList
+        } 
+
+        return parseFloat(localAns) ** parseFloat(item);
     },
     "mult":function(item = 2){
         if(typeof localAns == "object"){
@@ -207,11 +221,15 @@ for(j = 0; j < parsedCode.length; j++){
           if(arg[h].match(/\-?[0-9]+/g) != null){
              sp = parseFloat(arg[h].match(/\-?[0-9]+/g)[0])
             }
+            if(arg[h].match(/\+?[0-9]+/g) != null){
+             sp = parseFloat(arg[h].match(/[0-9]+/g)[0])
+            }
             arg[h] = vars[arg[h].match(/[a-zA-Z]/g)[0]]() + sp;
             
             
         }
-        if(arg[h].charAt(0) == "$"){
+        
+        if(typeof arg[h] == "string" && arg[h].charAt(0) == "$"){
             arg[h] = list[parseFloat(arg[h].split("$")[1])]
         }
     }
